@@ -1,6 +1,7 @@
+@import './../../mixins.scss';
+
 .header {
-    max-width: 1280px;
-    margin: 0 auto;
+    @include maxWidth;
 
     &--wrapper {
         display: flex;
