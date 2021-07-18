@@ -1,0 +1,9 @@
+/node_modules
+/src/api/node_modules
+**/*-lock.json
+/*-lock.json
+.DS_Store
+/build
+/dist
+**/node_modules/*
+.deploy
