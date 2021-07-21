@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+
 module.exports = (env) => {
 
     return {
@@ -56,7 +57,7 @@ module.exports = (env) => {
                 //favicon: "./public/favicon.png"
             }),
 
-            new Dotenv({path: env === 'dev' ? './environment/.env-development': './environments/.env-production'}),
+            new Dotenv({path: env.dev == 'true' ? './environments/.env-development': './environments/.env-production'}),
 
             new CopyWebpackPlugin({
                 patterns: [
