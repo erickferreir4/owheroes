@@ -25,7 +25,7 @@ const input_ab = [
     {name: 'video', type: 'text', elm: 'input'},
 ]
 
-const Form = (props) => {
+const AddHero = (props) => {
 
     const habilidadeRef = React.useRef(null)
     const audioRef = React.useRef(null)
@@ -33,8 +33,6 @@ const Form = (props) => {
 
     const [audio, setAudio] = React.useState([])
     const [habilidade, setHabilidade] = React.useState([])
-
-    console.log(process.env.API_URL)
 
 
     function addAudio(ev) {
@@ -99,13 +97,7 @@ const Form = (props) => {
             },
             body: JSON.stringify([data])
         })
-
-
-
-
-
     }
-
 
 
     return (
@@ -141,4 +133,4 @@ const Form = (props) => {
     )
 }
 
-export default Form;
+export default AddHero;

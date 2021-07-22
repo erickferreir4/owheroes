@@ -1,5 +1,24 @@
 @import './../../mixins.scss';
 
+.admin {
+    > span {
+        @include maxWidth;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        > button {
+            font-size: 26px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid;
+            padding: 10px;
+            background-color: #87b0ef;
+            color:#fff;
+        }
+    }
+}
 .form {
     @include maxWidth;
     background-color: #fff;

@@ -10,6 +10,8 @@ const Input = (props) => {
                     type={props.type} 
                     name={props.name}
                     required
+                    value={props?.value}
+                    onChange={props?.func}
                 />
             </label>
         )
@@ -18,7 +20,12 @@ const Input = (props) => {
         return (
             <label>
                 {props.name}
-                <textarea name={props.name} rows="10" required></textarea>
+                <textarea 
+                    onChange={props?.func}
+                    name={props.name} 
+                    rows="10" 
+                    value={props?.value}
+                    required></textarea>
             </label>
         )
     }
