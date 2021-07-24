@@ -48,7 +48,6 @@ const Form = ({obj, setObj, submit, buttons}) => {
                         {item}
                         <input 
                             disabled={item == '_id' ? true : false}
-                            required={true}
                             type="text" 
                             name={item} 
                             value={getObjectValue(obj, item)}

@@ -1,11 +1,16 @@
 import React from 'react';
 import Hero from './../../components/Hero'
 
+import {HeroStorage} from './../../context/HeroContext'
+
+
 
 const Home = (props) => {
 
     return (
-        <Hero/>
+        <HeroStorage>
+            <Hero/>
+        </HeroStorage>
     )
 }
 

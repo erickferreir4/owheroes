@@ -1,25 +1,12 @@
 @import './../../mixins.scss';
 
 .header {
-    @include maxWidth;
+    background-color: #fff;
 
     &--wrapper {
+        @include maxWidth;
         display: flex;
         align-items: center;
         justify-content: initial;
-        padding: 30px 0;
     }
-
-    ul {
-        display: flex;
-        align-items: center;
-
-        li {
-            span {
-                display: block;
-            }
-            margin: 0px 10px;
-        }
-    }
-
 }
