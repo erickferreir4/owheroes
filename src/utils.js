@@ -7,3 +7,7 @@ export function getObjectValue(obj, name) {
     let get = new Function("obj", `return obj.${name};`);
     return get(obj)
 }
+
+export function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}

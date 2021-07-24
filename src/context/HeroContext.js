@@ -1,4 +1,5 @@
 import React from 'react';
+import {randomNumber} from './../utils';
 
 const HeroContext = React.createContext()
 
@@ -13,13 +14,11 @@ const HeroStorage = ({children}) => {
 
     React.useEffect(() => {
 
-
         fetch(`${API}/heroes/all`).then( r => r.json())
             .then( result => {
                 setHeroes(result)
-                setHero(result[0])
+                setHero(result[randomNumber(0, result.length)])
             })
-
 
     }, [])
 

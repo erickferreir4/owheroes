@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.scss'
+import {randomNumber} from './../../utils';
 
 import {HeroContext} from './../../context/HeroContext'
 
@@ -9,6 +10,11 @@ const Hero = (props) => {
 
     const {hero, heroes, setHero} = React.useContext(HeroContext)
     const [heroTab, setHeroTab] = React.useState('overview')
+    const [video, setVideo] = React.useState([])
+    const [
+        audio,
+        setAudio
+            ] = React.useState(new Audio(hero.audio[randomNumber(0, hero.audio.length)].file))
 
 
     function changeTab(tab) {
@@ -16,10 +22,34 @@ const Hero = (props) => {
     }
 
     function changeHero(id) {
-        setHero(heroes.filter(hero => hero._id == id)[0])
+        let updateHero = heroes.filter(hero => hero._id == id)[0]
+        setHero(updateHero)
+
+        setAudio( audio => {
+            audio.pause()
+            let audioObj = new Audio(updateHero.audio[randomNumber(0, updateHero.audio.length)].file);
+            return audioObj
+        })
     }
 
+    function handleVideo(name) {
+        if(video.includes(name)) {
+            setVideo(video.filter(item => item !== name))
+        }
+        else {
+            setVideo([...video, name])
+        }
+    }
+
+    
+
+    React.useEffect(() => {
+        audio.play()
+    }, [audio])
+
+
     console.log(hero)
+
 
     return (
         <>
@@ -28,7 +58,11 @@ const Hero = (props) => {
             {
                 heroes.map(item => (
                     <li key={item._id}>
-                        <button onClick={() => changeHero(item._id)}><img src={item.thumb} /></button>
+                        <button 
+                            className={item._id == hero._id ? 'is--active' : null}
+                            onClick={() => changeHero(item._id)}>
+                            <img src={item.thumb} />
+                        </button>
                     </li>
                 ))
             }
@@ -105,9 +139,19 @@ const Hero = (props) => {
                                             <span>
                                                 <h5>{item.name}</h5>
                                                 <p>{item.description}</p>
+
+                                                <button 
+                                                    onClick={() => handleVideo(item.name)}>
+                                                    {video.includes(item.name) ? 'hide video' : 'show video'}
+                                                </button>
                                             </span>
                                         </div>
-                                        <video autoPlay={true} muted={true} loop={true}>
+                                        <video 
+                                            autoPlay={true} 
+                                            muted={true} 
+                                            loop={true} 
+                                            className={video.includes(item.name) ? 'is--active' : null}>
+
                                             <source src={item.video} type="video/mp4"/>
                                         </video>
                                     </li>
