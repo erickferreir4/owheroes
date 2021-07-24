@@ -8,4 +8,21 @@
     padding-top: 30px;
     padding-bottom: 30px;
     
+
+    .tabs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            font-weight: 600;
+            background-color: #101010;
+            color: #fff;
+            font-size: 26px;
+            padding: 10px;
+            text-transform: uppercase;
+            border: 2px solid #fff;
+        }
+    }
+
 }

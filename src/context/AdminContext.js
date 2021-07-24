@@ -2,12 +2,14 @@ import React from 'react';
 
 const AdminContext = React.createContext()
 
-
 const AdminStorage = ({children}) => {
 
     return (
         <AdminContext.Provider 
-            value={{}}>
+            value={
+                {}
+            }>
+
             {children}
         </AdminContext.Provider>
     )

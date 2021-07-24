@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.scss';
+import {setObjectValue, getObjectValue} from './../../utils'; 
 
 
 const Form = ({obj, setObj, submit, buttons}) => {
@@ -11,6 +12,7 @@ const Form = ({obj, setObj, submit, buttons}) => {
      * set all name input
      */
     React.useEffect(() => {
+        setName([])
 
         Object.entries(obj).map( item => {
             if(Array.isArray(item[1])) {
@@ -25,27 +27,31 @@ const Form = ({obj, setObj, submit, buttons}) => {
               setName(name => [...name, item[0]])
             }
         })
+
     }, [])
 
     function handleChange({target}) {
-        //var getter = new Function("obj", "return obj." + target.name + ";");
-        var set = new Function("object", "object." + target.name + " = '"+target.value+"'; return object");
-        var obj_update = {...obj}
-        setObj(set(obj_update))
+        let value = JSON.stringify(target.value)
+        let obj_update = {...obj}
+
+        setObj( 
+            setObjectValue(obj_update, target.name, value)
+        )
     }
 
-    //console.log(obj, true)
 
     return (
         <>
             <form onSubmit={submit} className="form">
-                {name.map( (item, index) => (
+                {name.map( (item, index) =>( 
                     <label className="form-label" key={index}>
                         {item}
                         <input 
+                            disabled={item == '_id' ? true : false}
+                            required={true}
                             type="text" 
                             name={item} 
-                            value={obj[item]} 
+                            value={getObjectValue(obj, item)}
                             onChange={handleChange}/>
                     </label>
                 ))}
