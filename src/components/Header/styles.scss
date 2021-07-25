@@ -1,12 +1,16 @@
 @import './../../mixins.scss';
 
 .header {
-    background-color: #fff;
+    background-color: #000;
 
     &--wrapper {
         @include maxWidth;
         display: flex;
         align-items: center;
         justify-content: initial;
+    }
+
+    img {
+        width: 200px;
     }
 }

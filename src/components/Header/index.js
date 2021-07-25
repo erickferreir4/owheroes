@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.scss'
+import logo from './images/ow-logo.png'
 
 const Header = (props) => {
 
@@ -7,7 +8,7 @@ const Header = (props) => {
         <header className="header">
             <div className="header--wrapper">
                 <span>
-                    <img src="http://via.placeholder.com/150x50" />
+                    <img src={logo} />
                 </span>
             </div>
         </header>

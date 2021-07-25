@@ -2,6 +2,7 @@
 
 .hero {
     @include maxWidth;
+    padding-bottom: 150px;
     video {
         width: 100%;
     }
@@ -22,7 +23,7 @@
     &--video {
         background-color: rgba(19,42,77,.85);
         position: absolute;
-        top: 231px;
+        top: 208px;
         left: 0;
         z-index: -1; /*apenas um -1 é necessário quando se trabalha com relative + absolute, sendo pai e filho*/
         width: 100%;
