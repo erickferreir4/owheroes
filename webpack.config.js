@@ -62,7 +62,8 @@ module.exports = (env) => {
             new CopyWebpackPlugin({
                 patterns: [
                     //{ from: "public/images", to: "images" },
-                    { from: "public/video", to: "video" },
+                    //{ from: "public/video", to: "video" },
+                    //{ from: "public/audio", to: "audio" },
                 ],
             })
         ],

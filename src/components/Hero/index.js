@@ -67,13 +67,22 @@ const Hero = (props) => {
                 ))
             }
             </ul>
+
         </div>
         <div className="hero">
 
             <div className="hero--video">
-                    <video key={hero._id} autoPlay={true} loop={true} muted={true}>
-                        <source src={hero.video} type="video/mp4"/>
-                    </video>
+                <div className="hero--name">
+                    <h1>{hero.name}</h1> 
+                </div>
+                { /webm/.test(hero.bg) ? (
+                <video key={hero._id} autoPlay={true} loop={true} muted={true}>
+                    <source src={hero.bg} type="video/mp4"/>
+                </video>
+                ): (
+                    <img src={hero.bg} />
+                )}
+
             </div>
 
 
@@ -95,10 +104,10 @@ const Hero = (props) => {
                 <div className={heroTab === 'story' ? "hero--story is--active": "hero--story"}>
                     <h4>Biography</h4>
                     <ul>
-                        <li>Real Name: {hero.real_name}</li>
-                        <li>Occupation: {hero.occupation}</li>
-                        <li>Base of Operations: {hero.base_of_operations}</li>
-                        <li>Affiliation: {hero.affiliation}</li>
+                        <li>{hero.real_name}</li>
+                        <li>{hero.occupation}</li>
+                        <li>{hero.base_of_operations}</li>
+                        <li>{hero.affiliation}</li>
                     </ul>
 
                     <h5>{hero.phrase}</h5>
@@ -162,6 +171,7 @@ const Hero = (props) => {
 
                 </div>
             </div>
+
 
 
         </div>
