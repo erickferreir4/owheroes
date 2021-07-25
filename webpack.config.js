@@ -59,13 +59,13 @@ module.exports = (env) => {
 
             new Dotenv({path: env.dev == 'true' ? './environments/.env-development': './environments/.env-production'}),
 
-            new CopyWebpackPlugin({
-                patterns: [
-                    //{ from: "public/images", to: "images" },
-                    //{ from: "public/video", to: "video" },
-                    //{ from: "public/audio", to: "audio" },
-                ],
-            })
+            //new CopyWebpackPlugin({
+            //    patterns: [
+            //        //{ from: "public/images", to: "images" },
+            //        //{ from: "public/video", to: "video" },
+            //        //{ from: "public/audio", to: "audio" },
+            //    ],
+            //})
         ],
         output: {
             path: path.resolve(__dirname, 'dist'),
