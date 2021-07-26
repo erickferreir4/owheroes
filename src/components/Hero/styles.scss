@@ -29,6 +29,7 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
+
         &:after {
             content: "";
             display: block;
@@ -294,28 +295,78 @@
             }
 
         }
-            ul {
-                padding: 20px;
-                li {
-                    background-color: #283a4c;
-                    margin-bottom: 10px;
-                    div {
-                        display: flex;
-                    }
+        ul {
+            padding: 20px;
+            li {
+                background-color: #283a4c;
+                margin-bottom: 10px;
+                div {
+                    display: flex;
+                }
 
-                    span {
-                        display: flex;
-                        padding: 20px;
-                        flex-direction: column;
-                        align-items: baseline;
-                        justify-content: center;
-                    }
-                    video {
-                        border-top: 10px solid;
-                    }
+                span {
+                    display: flex;
+                    padding: 20px;
+                    flex-direction: column;
+                    align-items: baseline;
+                    justify-content: center;
+                }
+                video {
+                    border-top: 10px solid;
                 }
             }
+        }
+    }
+}
+
+
+
+.lazy {
+    &--thumbs {
+        @include lazy;
+        height:  250px;
     }
 
+    &--wrapper {
+        @include maxWidth;
+        display: flex;
+    }
 
+    &--info {
+        @include lazy;
+        height: 900px;
+        width: 50%;
+        position: relative;
+        top: -100px;
+    }
+
+    &--bg {
+        @include lazy;
+        height: 700px;
+        width: 50%;
+    }
+}
+
+
+@media( max-width: 768px ) {
+    .hero {
+        &--wrapper {
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 60px;
+        }
+        &--video {
+            position: initial;
+            height: auto;
+            &:after {
+                display:none;
+            }
+        }
+
+        &--name {
+            float: initial;
+            font-size: 35px;
+            width: 100%;
+        }
+    }
 }

@@ -24,7 +24,7 @@ const HeroStorage = ({children}) => {
 
 
 
-    if(hero == null) return null;
+    //if(hero == null) return null;
 
     return (
         <HeroContext.Provider

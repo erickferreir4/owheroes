@@ -7,14 +7,13 @@ import {HeroContext} from './../../context/HeroContext'
 
 const Hero = (props) => {
 
-
     const {hero, heroes, setHero} = React.useContext(HeroContext)
     const [heroTab, setHeroTab] = React.useState('overview')
     const [video, setVideo] = React.useState([])
     const [
         audio,
         setAudio
-            ] = React.useState(new Audio(hero.audio[randomNumber(0, hero.audio.length)].file))
+            ] = React.useState(new Audio(hero?.audio[randomNumber(0, hero?.audio?.length)].file))
 
 
     function changeTab(tab) {
@@ -44,19 +43,27 @@ const Hero = (props) => {
     
 
     React.useEffect(() => {
-        audio.play()
+        audio?.play()
     }, [audio])
 
 
-    console.log(hero)
+    if(hero == null) return (
+        <>
+            <div className="lazy--thumbs"></div>
 
+            <div className="lazy--wrapper">
+                <div className="lazy--info"></div>
+                <div className="lazy--bg"></div>
+            </div>
+        </>
+    ) 
 
     return (
         <>
         <div className="hero--thumbs">
             <ul>
             {
-                heroes.map(item => (
+                heroes?.map(item => (
                     <li key={item._id}>
                         <button 
                             className={item._id == hero._id ? 'is--active' : null}
@@ -73,14 +80,14 @@ const Hero = (props) => {
 
             <div className="hero--video">
                 <div className="hero--name">
-                    <h1>{hero.name}</h1> 
+                    <h1>{hero?.name}</h1> 
                 </div>
-                { /webm/.test(hero.bg) ? (
-                <video key={hero._id} autoPlay={true} loop={true} muted={true}>
-                    <source src={hero.bg} type="video/mp4"/>
+                { /webm/.test(hero?.bg) ? (
+                <video key={hero?._id} autoPlay={true} loop={true} muted={true}>
+                    <source src={hero?.bg} type="video/mp4"/>
                 </video>
                 ): (
-                    <img src={hero.bg} />
+                    <img src={hero?.bg} />
                 )}
 
             </div>
@@ -104,26 +111,26 @@ const Hero = (props) => {
                 <div className={heroTab === 'story' ? "hero--story is--active": "hero--story"}>
                     <h4>Biography</h4>
                     <ul>
-                        <li>{hero.real_name}</li>
-                        <li>{hero.occupation}</li>
-                        <li>{hero.base_of_operations}</li>
-                        <li>{hero.affiliation}</li>
+                        <li>{hero?.real_name}</li>
+                        <li>{hero?.occupation}</li>
+                        <li>{hero?.base_of_operations}</li>
+                        <li>{hero?.affiliation}</li>
                     </ul>
 
-                    <h5>{hero.phrase}</h5>
+                    <h5>{hero?.phrase}</h5>
 
-                    <p>{hero.story}</p>
+                    <p>{hero?.story}</p>
                 </div>
 
                 <div className={heroTab === 'overview' ? "hero--overview is--active" : "hero--overview"}>
                     <div className="hero--overview--head">
                         <span>
                             <h4>ROLE</h4>
-                            <h3>{hero.role}</h3>
+                            <h3>{hero?.role}</h3>
                         </span>
                         <span>
                             <h4>DIFFICULTY</h4>
-                            <span className={`hero--star--${hero.difficulty}`}>
+                            <span className={`hero--star--${hero?.difficulty}`}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -132,7 +139,7 @@ const Hero = (props) => {
                     </div>
                         
                     <p className="hero--overview--info">
-                        {hero.description}
+                        {hero?.description}
                     </p>
             
                     <div className="hero--abilities">
@@ -141,7 +148,7 @@ const Hero = (props) => {
 
                         <ul>
                             {
-                                hero.abilities.map( item => item.name.length && (
+                                hero?.abilities.map( item => item.name.length && (
                                     <li key={item.name}>
                                         <div>
                                             <div className="hero--abilities--img"><img src={item.img}/></div>
