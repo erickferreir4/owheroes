@@ -54,7 +54,7 @@ module.exports = (env) => {
                 template: './public/index.html',
                 minify: false,
                 chunks: ['index'],
-                //favicon: "./public/favicon.png"
+                favicon: "./public/favicon.ico"
             }),
 
             new Dotenv({path: env.dev == 'true' ? './environments/.env-development': './environments/.env-production'}),
